@@ -1,0 +1,69 @@
+using System;
+
+namespace 
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double[] sajat = new double[5];
+            double[] barat = new double[5];
+            double ove = 0;
+            double enyim = 0;
+            for (int i = 0; i < barat.Length; i++)
+            {
+                bool joe= barat[i] < Math.Pow(10,10) && barat[i] > -(Math.Pow(10,10));
+                barat[i] = double.Parse(Console.ReadLine());
+                do
+                {
+                    barat[i] = double.Parse(Console.ReadLine());
+                } while (joe);
+                
+
+
+
+
+            }
+            for (int j = 0; j < sajat.Length; j++)
+            {
+                if (barat[j] == 0)
+                {
+                    sajat[j] = j + 1;
+
+                }
+                else if (barat[j] % 2 == 0)
+                {
+                    sajat[j] = barat[j] - (2 * (j + 1));
+                }
+                else if (barat[j] % 2 == 1)
+                {
+                    sajat[j] = barat[j] + ((j + 1) / 2);
+                }
+                if (j == sajat.Length - 1)
+                {
+                    for (int k = 0; k < barat.Length; k++)
+                    {
+                        ove += barat[k];
+                    }
+                    for (int l = 0; l < sajat.Length; l++)
+                    {
+                        enyim += barat[l];
+                    }
+                    sajat[j] = ove - enyim;
+                }
+            }
+            for (int m = 0; m < sajat.Length; m++)
+            {
+                Console.Write(sajat[m]);
+                if (m < sajat.Length - 1)
+                {
+                    Console.Write(", ");
+                }
+
+            }
+            Console.WriteLine("\n");
+            Console.WriteLine(ove);
+            Console.WriteLine(enyim);
+        }
+    }
+}

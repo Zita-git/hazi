@@ -1,0 +1,85 @@
+using System;
+namespace 
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            #region tombok,valtozok
+            double[] baratTomb = new double[5];
+            double[] sajatTomb = new double[5];
+            double utolso = 0;
+            double baratOsszeg = 0;
+            double sajatOsszeg = 0;
+            #endregion
+            #region adatBekeres                        
+
+            for (int i = 0; i < baratTomb.Length; i++)
+            {
+                do
+                {
+                    baratTomb[i] = double.Parse(Console.ReadLine());
+                } while ((baratTomb[i] > -10000000000 || baratTomb[i] < 10000000000));
+            }
+            #endregion
+            #region szamitas
+            for (int j = 0; j < baratTomb.Length; j++)
+            {
+                if (baratTomb[j] == 0)
+                {
+                    sajatTomb[j] = j + 1;
+                }
+                //páros
+                else if (baratTomb[j] % 2 == 0)
+                {
+                    sajatTomb[j] = baratTomb[j] + 2 * (j + 1);
+                }
+                //páratlan
+                else if (baratTomb[j] % 2 != 0)
+                {
+                    sajatTomb[j] = Math.Ceiling(baratTomb[j] + ((j + 1) / 2));
+                }
+            }
+            #endregion
+            #region utosoTag
+            for (int k = 0; k < baratTomb.Length; k++)
+            {
+                baratOsszeg += baratTomb[k];
+            }
+            for (int l = 0; l < 4; l++)
+            {
+                sajatOsszeg += sajatTomb[l];
+            }
+            utolso = baratOsszeg - sajatOsszeg;
+            sajatTomb[4] = utolso;
+            #endregion
+            #region ellenorzo
+            /*Console.Clear();
+            for (int m = 0; m < sajatTomb.Length; m++)
+            {
+                Console.Write(baratTomb[m] + "* ");
+                Console.Write(sajatTomb[m] + ", ");
+                Console.WriteLine();
+            }
+            Console.WriteLine("---" + baratOsszeg + "---");
+            Console.WriteLine("---" + (sajatOsszeg + utolso) + "---");
+            Console.WriteLine("---" + utolso + "---");*/
+            #endregion
+            #region veglegesKiiras
+            Console.Clear();
+            for (int n = 0; n < sajatTomb.Length; n++)
+            {
+                if (n!=sajatTomb.Length-1)
+                {
+                    Console.Write(sajatTomb[n] + ", ");
+                }
+                else
+                {
+                    Console.Write(sajatTomb[n]);
+                }
+                
+            }
+            #endregion
+        }
+    }
+}
